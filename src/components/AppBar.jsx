@@ -1,26 +1,38 @@
-import { View, StyleSheet, Text } from 'react-native';
-import { Link } from 'react-router-native';
-
+import { StyleSheet, ScrollView } from 'react-native';
+import Tab from './Tab';
 import theme from '../theme';
+import useMe from '../hooks/useMe';
 
 const styles = StyleSheet.create({
-  container: {
+  defaultTab: {
     paddingTop: theme.paddings.top,
     paddingLeft: theme.paddings.left,
     paddingBottom: theme.paddings.bottom
   },
-  text: {
-    fontSize: theme.fontSizes.tab,
-    color: theme.colors.textTabHeading,
-    fontWeight: theme.fontWeights.bold
+  lastTab: {
+    paddingTop: theme.paddings.top,
+    paddingLeft: theme.paddings.left,
+    paddingRight: theme.paddings.right,
+    paddingBottom: theme.paddings.bottom
   }
 });
 
-const AppBar = (props) => {
+const AppBar = () => {
+  const { data } = useMe()
+  const me = data ? data.me : null
   return (
-    <View style={styles.container}>
-      <Link to={`/${props.url}`}><Text style={styles.text}>{props.name}</Text></Link>
-    </View>
+    <ScrollView horizontal={true}>
+      <Tab style={styles.defaultTab} name={'Repositories'}/>
+      {me ? 
+        <>
+          <Tab style={styles.lastTab} name={'Sign Out'} url={'signOut'}/>
+        </>
+        :
+        <>
+          <Tab style={styles.lastTab} name={'Sign In'} url={'signIn'}/>
+        </>
+      }
+    </ScrollView>
   )
 };
 

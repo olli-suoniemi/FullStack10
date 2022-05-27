@@ -28,6 +28,7 @@ const theme = {
     paddings: {
       top: 40,
       left: 20,
+      right: 20,
       bottom: 30
     }
 };

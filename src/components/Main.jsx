@@ -2,9 +2,10 @@ import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import SignIn from './SignIn';
 import theme from '../theme';
+import SignOut from './SignOut';
 
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
-import { Route, Routes, Navigate, Link } from 'react-router-native'
+import { StyleSheet, View } from 'react-native';
+import { Route, Routes, Navigate } from 'react-router-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -22,13 +23,11 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <View style={styles.tabContainer}>
-        <ScrollView horizontal={true}>
-          <AppBar name={'Repositories'}/>
-          <AppBar name={'Sign In'} url={'signIn'}/>
-        </ScrollView>
+        <AppBar/>
       </View>
       <Routes>
         <Route path="/signIn" element={<SignIn />} exact />
+        <Route path="signOut" element={<SignOut />} exact />
         <Route path="/" element={<RepositoryList />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
