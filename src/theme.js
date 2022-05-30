@@ -6,8 +6,13 @@ const theme = {
       textSecondary: '#586069',
       textTabHeading: 'white',
       primary: '#0366d6',
-      background: '#24292e',
-      button: 'white'
+      tabBackground: '#24292e',
+      buttonBackGround: '#2468c7',
+      buttonText: 'white',
+      errorText: '#d73a4a',
+      background: '#ececec',
+      flexBoxBackgroundColor: '#abc',
+      inputBorder: '#abc0d4'
     },
     fontSizes: {
       body: 14,
@@ -25,7 +30,7 @@ const theme = {
       normal: '400',
       bold: '700',
     },
-    paddings: {
+    tabPaddings: {
       top: 40,
       left: 20,
       right: 20,

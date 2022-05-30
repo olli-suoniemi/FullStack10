@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     color: theme.colors.primary,
   },
   colorButton: {
-    color: theme.colors.button
+    color: theme.colors.buttonText
   },
   fontSizeSubheading: {
     fontSize: theme.fontSizes.subheading,

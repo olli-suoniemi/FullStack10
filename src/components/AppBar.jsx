@@ -1,19 +1,21 @@
 import { StyleSheet, ScrollView } from 'react-native';
+import Constants from 'expo-constants';
 import Tab from './Tab';
 import theme from '../theme';
 import useMe from '../hooks/useMe';
 
+const HEIGHT = 15
 const styles = StyleSheet.create({
   defaultTab: {
-    paddingTop: theme.paddings.top,
-    paddingLeft: theme.paddings.left,
-    paddingBottom: theme.paddings.bottom
+    paddingTop: Constants.statusBarHeight + HEIGHT,
+    paddingLeft: theme.tabPaddings.left,
+    paddingBottom: theme.tabPaddings.bottom,
   },
   lastTab: {
-    paddingTop: theme.paddings.top,
-    paddingLeft: theme.paddings.left,
-    paddingRight: theme.paddings.right,
-    paddingBottom: theme.paddings.bottom
+    paddingTop: Constants.statusBarHeight + HEIGHT,
+    paddingLeft: theme.tabPaddings.left,
+    paddingRight: theme.tabPaddings.right,
+    paddingBottom: theme.tabPaddings.bottom
   }
 });
 
@@ -25,11 +27,14 @@ const AppBar = () => {
       <Tab style={styles.defaultTab} name={'Repositories'}/>
       {me ? 
         <>
+          <Tab style={styles.defaultTab} name={'Create a review'} url={'create'}/>
+          <Tab style={styles.defaultTab} name={'My reviews'} url={'myReviews'}/>
           <Tab style={styles.lastTab} name={'Sign Out'} url={'signOut'}/>
         </>
         :
         <>
-          <Tab style={styles.lastTab} name={'Sign In'} url={'signIn'}/>
+          <Tab style={styles.defaultTab} name={'Sign In'} url={'signIn'}/>
+          <Tab style={styles.lastTab} name={'Sign Up'} url={'signUp'}/>
         </>
       }
     </ScrollView>
